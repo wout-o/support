@@ -67,11 +67,13 @@
         livewire: null,
 
         close: function () {
-            this.isOpen = false
+            if (this.isOpen) {
+                this.isOpen = false
 
-            this.$refs.modalContainer.dispatchEvent(
-                new CustomEvent('modal-closed', { id: '{{ $id }}' }),
-            )
+                this.$refs.modalContainer.dispatchEvent(
+                    new CustomEvent('modal-closed', { id: '{{ $id }}' }),
+                )
+            }
         },
 
         open: function () {
